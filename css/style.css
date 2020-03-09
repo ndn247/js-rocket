@@ -1,0 +1,69 @@
+.left {
+	background-color: aquamarine;
+	position: fixed;
+	width: 50%;
+	height: 100%;	/* 100% of viewport height. fixed is positioning relative to viewport */
+	top: 0;
+	left: 0;
+}
+
+.state1 {
+
+}
+
+.state1,
+.state2,
+.state3,
+.state4,
+.state5 {
+	display: none;
+}
+
+body.body-state1 .state1,
+body.body-state2 .state2,
+body.body-state3 .state3,
+body.body-state4 .state4,
+body.body-state5 .state5 { 	/* taking advantage of specificity rule to override generic .state(n) */
+	display: block;
+}
+
+
+.right {
+	background-color: aliceblue;
+	position: fixed;
+	width: 50%;
+	height: 100%;	/* 100% of viewport height. fixed is positioning relative to viewport */
+	top: 0;
+	right: 0;
+}
+
+a.button {
+
+}
+
+.rocket {
+	position: absolute;  /* will allow movement of rocket relative to parent div.right */
+	left: 50%;
+	bottom: 20px;
+	width: 20px;
+	height: 100px;
+	background-color: blue;
+	transition: bottom 10000ms;
+}
+
+body.body-state1 .rocket {
+	transition: none;
+}
+
+body.body-state3 .rocket,
+body.body-state4 .rocket {		/* is this like extending class rocket with class flying? */
+	bottom: 1000px;
+}
+
+.ground {
+	background-color: green;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 20px;
+}
