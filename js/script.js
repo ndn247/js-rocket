@@ -6,6 +6,9 @@ function changeState(state) {
 	clearInterval(timer);      //if 'Abort' button is pressed during countdown, we want to stop setInterval from running
 	countdownNumber = 10;      //reset countdown to start at 10
 	document.getElementById('countdown').innerHTML = countdownNumber;
+	document.getElementById('nervous').className = 'nervous'; 
+	document.getElementById('cant-wait').className = 'cant-wait';
+
 
 	//countdown
 	if(state == 2) {
@@ -15,8 +18,19 @@ function changeState(state) {
 													//The ID value returned by setInterval() is used as the parameter for the clearInterval() method.
 						countdownNumber = countdownNumber - 1;
 						document.getElementById('countdown').innerHTML = countdownNumber;
-						
-						if(countdownNumber <= 0) {
+						if(countdownNumber > 4 && countdownNumber <=7) {						//nervous dialogue
+							document.getElementById('nervous').className = 'nervous show';  
+						} else {
+							document.getElementById('nervous').className = 'nervous'; 
+						}
+
+						if(countdownNumber > 1 && countdownNumber <= 4) {				//cant wait dialogue
+							document.getElementById('cant-wait').className = 'cant-wait show';
+						} else {
+							document.getElementById('cant-wait').className = 'cant-wait'; 
+						}
+
+						if(countdownNumber <= 0) { 							//time to switch to lift off mode!
 							changeState(3);
 						}
 					}, 500);	
